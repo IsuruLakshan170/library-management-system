@@ -58,8 +58,8 @@ public class TransactionService implements Transaction {
                 .findAny()
                 .ifPresent(a -> a.setBorrowed(true));
 
-        Borrowings borrowings = new Borrowings();
-        borrowings.setBook(book);
+                Borrowings borrowings = new Borrowings.BorrowingsBuilder().book(book).dueDate(null).build();
+                borrowings.setBook(book);
         borrowings.setBorrower(borrower);
         borrowings.setDueDate(LocalDate.now().plusDays(1));
 
